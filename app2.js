@@ -525,8 +525,27 @@ var id=req.params._id;
  {var d=convert(result[0].dob)
   console.log(d);
   var sql = "INSERT INTO schooldata (firstname,lastname,phoneno,email,age,dob,dobc,markc,addc) VALUES ('"+result[0].firstname+"','"+result[0].lastname+"','"+result[0].phoneno+"','"+result[0].email+"','"+result[0].age+"','"+d+"','"+result[0].dobc+"','"+result[0].markc+"','"+result[0].addc+"')";
+  
+
   con.query(sql, function(err, result)  {
    if(err) throw err;
+   var mailOptions = 
+  {
+    from: 'hackathonsteve@gmail.com',
+    to:result[0].email,
+    subject: 'Fee payment',
+    text: 'You have been added to schhol. Welcome to hackathon famity'
+  }  
+  transporter.sendMail(mailOptions, function(error, info)
+  {
+    if (error) 
+    {
+      console.log(error);
+    } 
+    else 
+    {
+    console.log('Email sent: ' + info.response);
+    }
 });
 con.query('DELETE FROM studentfee WHERE username = ? ',[id], function (err, result) {
   if (err) throw err;
