@@ -242,6 +242,8 @@ app.post('/addtoCart/:id', (req, res) => {
   cart.insertOne(req.body)
     .then(result => {
       console.log("yooooooooooooooooooooooooooooooooooooooooooooooooo");
+        return res.redirect('/bookinventory');
+
      // console.log(result)
     })
     .catch(error => console.error(error))
