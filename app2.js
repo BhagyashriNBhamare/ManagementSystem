@@ -248,7 +248,7 @@ app.post('/addtoCart/:id', (req, res) => {
     })
     .catch(error => console.error(error))
 
-  return res.redirect('/bookinventory');
+ // return res.redirect('/bookinventory');
 
 
 }); 
