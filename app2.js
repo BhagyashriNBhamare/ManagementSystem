@@ -16,6 +16,7 @@ var nodemailer = require('nodemailer');
 fileUpload = require('express-fileupload')
 // var mysqlAdmin = require('node-mysql-admin');
 // app.use(mysqlAdmin(app));
+/*
  var transporter = nodemailer.createTransport({
   host: 'smtp.ethereal.email',
   port: 2525,
@@ -25,7 +26,7 @@ fileUpload = require('express-fileupload')
     pass: '02512609841'
   }
 });
-
+*/
 var mysql = require('mysql');
 var con = mysql.createConnection({
  host: "bg2rzlbwqqu9pzkzlglw-mysql.services.clever-cloud.com",
