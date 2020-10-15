@@ -529,6 +529,8 @@ var id=req.params._id;
 
   con.query(sql, function(err, result)  {
    if(err) throw err;
+
+   /*
    var mailOptions = 
   {
     from: 'hackathonsteve@gmail.com',
@@ -546,6 +548,7 @@ var id=req.params._id;
     {
     console.log('Email sent: ' + info.response);
     }
+    */
 });
 con.query('DELETE FROM studentfee WHERE username = ? ',[id], function (err, result) {
   if (err) throw err;
