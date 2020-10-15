@@ -282,7 +282,7 @@ app.post('/placeOrder', function(req, res) {
 
           } 
 var mailOptions = {
-  from: 'arpitjadiya05@gmail.com',
+  from: 'helpify123@gmail.com',
   to: req.body.supplier_email,
   subject: 'test order mail hackathon',
   text: stringto_mail,
@@ -304,13 +304,14 @@ transporter.sendMail(mailOptions, function(error, info){
 
     };
     db.collection('orders_history').insertOne(obj);
+      return res.redirect('/bookinventory');
+
 
     // 0: ordered, 1: delivered, 2:cancelled
 
   }
 
 
-  return res.redirect('/bookinventory');
 
 
 }); 
