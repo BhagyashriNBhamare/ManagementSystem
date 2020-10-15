@@ -643,6 +643,7 @@ res.redirect("/req");
 
 
 
-app.listen(process.env.PORT || 3000);
-console.log('you are listening to port 3000');
+app.listen(process.env.PORT);
+console.log('you are listening to port ');
+console.log(process.env.PORT);
 
