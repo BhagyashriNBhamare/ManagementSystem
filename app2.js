@@ -16,17 +16,17 @@ var nodemailer = require('nodemailer');
 fileUpload = require('express-fileupload')
 // var mysqlAdmin = require('node-mysql-admin');
 // app.use(mysqlAdmin(app));
-/*
+
  var transporter = nodemailer.createTransport({
   host: 'smtp.ethereal.email',
   port: 2525,
   service: 'gmail',
   auth: {
-    user: 'helpify123@gmail.com',
-    pass: '02512609841'
+    user: 'hackathonsteve@gmail.com',
+    pass: 'steve_123'
   }
 });
-*/
+
 var mysql = require('mysql');
 var con = mysql.createConnection({
  host: "bg2rzlbwqqu9pzkzlglw-mysql.services.clever-cloud.com",
@@ -283,7 +283,7 @@ app.post('/placeOrder', function(req, res) {
 
           } 
 var mailOptions = {
-  from: 'helpify123@gmail.com',
+  from: 'hackathonsteve@gmail.com',
   to: req.body.supplier_email,
   subject: 'test order mail hackathon',
   text: stringto_mail,
@@ -407,7 +407,7 @@ var sql = "INSERT INTO data (firstname,lastname,phoneno,email,age,dob,dobc,markc
     console.log(date)
    if(err) throw err;
 });
-  res.sendFile(path.join(__dirname,'main.html'));
+  res.redirect('/');
 });
 
 app.post('/admin', function(req, res) {
@@ -555,7 +555,7 @@ console.log(ser)
 con.query('SELECT * FROM data WHERE id =  ?', [ser], function(err, result, fields) {
       if (err) throw err;
 var mailOptions = {
-    from: 'helpify123@gmail.com',
+    from: 'hackathonsteve@gmail.com',
     to:result[0].email,
     subject: 'Sorry we could not approve your request',
     text: 'The information provided by you  has some invalid information which is restricting us to coordinate with your team. Do recheck the information you have provided.'
@@ -612,7 +612,7 @@ var ser=req.params._id;
 
   var mailOptions = 
   {
-    from: 'helpify123@gmail.com',
+    from: 'hackathonsteve@gmail.com',
     to:result[0].email,
     subject: 'Fee payment',
     text: 'You need to pay fee with username '+result[0].id+' and password'+ result[0].age +"After that your addmission will be confirmed."
