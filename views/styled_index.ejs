@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+columnfull {
+  float: left;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.column {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.cardtop {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  color: white;
+  background-color: #000000;
+}
+
+.card1 {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.card2 {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.card3 {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+
+.card1:hover
+{
+    background-color: #00FFFF;
+
+}
+
+.card2:hover
+{
+    background-color: #00FFFF;
+
+}
+.card3:hover
+{
+    background-color: #00FFFF;
+
+}
+.logoutLblPos{
+   background-color: #008080;
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+.button {
+  background-color: #008080;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+</style>
+  <title>MY APP</title>
+</head>
+
+
+
+
+
+<!----------------------------------------------------------------------------------------------------------------------->
+<body>
+
+  <div class="row">
+
+<div class="columnfull">
+    <div class="cardtop">
+<h2>Welcome to Book Inventory</h2>
+<p>Place orders, keep a track of items!</p>
+
+ </div>
+  </div>
+  <form action="/"> 
+<button type="submit" class="button button1">LOGOUT</button>
+</form>
+  <br>
+  <br>
+
+	<div class="column">
+      <div class="card1">
+
+  <h2> Available items </h2>
+<h2> Available </h2>
+
+<ul >
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < avail.length; i++) {%>
+    <li >
+      <!-- Output name from the iterated quote object -->
+            <span><%= avail[i]._id %></span>:
+
+      <span><%= avail[i].name %></span>:
+      <!-- Output quote from the iterated quote object -->
+      <span><%= avail[i].quantity %></span>
+            <span><%= avail[i].supplier_email %></span>
+
+    </li>
+
+  <a href="http://127.0.0.1:3000/editavail/<%= avail[i]._id %>"  >update</a> 
+
+
+  <% } %>
+</ul>
+   <a href="http://127.0.0.1:3000/add">Add a new item</a> 
+</div>
+</div>
+
+<div class="column">
+      <div class="card2">
+
+  <h1> Shop </h1>
+<h2> Items </h2>
+
+<ul >
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < item.length; i++) {%>
+    <li >
+      <!-- Output name from the iterated quote object -->
+            <span><%= item[i]._id %></span>:
+
+      <span><%= item[i].name %></span>:
+      <!-- Output quote from the iterated quote object -->
+      <span><%= item[i].quantity %></span>
+            <span><%= item[i].supplier_email %></span>
+
+              <span><%= item[i].price %></span>
+
+
+    </li>
+
+  <a href="http://127.0.0.1:3000/edititem/<%= item[i]._id %>"  >update</a> 
+   <a href="http://127.0.0.1:3000/addtoCart/<%= item[i]._id %>"  >add to cart</a> 
+
+
+
+  <% } %>
+</ul>
+   <a href="http://127.0.0.1:3000/addinShop">Add a new item in shop</a> 
+
+</div>
+
+</div>
+
+<div class="column">
+      <div class="card3">
+
+  <h2> Cart </h2>
+
+<ul >
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < cart.length; i++) {%>
+    <li >
+      <!-- Output name from the iterated quote object -->
+            <span><%= cart[i]._id %></span>:
+
+      <span><%= cart[i].name %></span>:
+      <!-- Output quote from the iterated quote object -->
+      <span><%= cart[i].quantity %></span>
+            <span><%= cart[i].supplier_email %></span>
+
+    </li>
+
+  <% } %>
+</ul>
+
+   <a href="http://127.0.0.1:3000/placeOrder">Place order</a> <br>
+      <a href="http://127.0.0.1:3000/previousOrders">Previous Orders</a> 
+
+
+</div>
+</div>
+
+</div>
+</body>
+</html>
+

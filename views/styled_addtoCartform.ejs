@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+columnfull {
+  float: left;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.column {
+  margin:auto;
+  width: 50%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.cardtop {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  color: white;
+  background-color: #000000;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="row">
+
+<div class="columnfull">
+    <div class="cardtop">
+<h2>Add the given item to cart</h2>
+<p>Enter the required quantity to order</p>
+
+ </div>
+  </div>
+  <br>
+  <br>
+
+<div class="column">
+      <div class="card">
+
+
+<form action="http://127.0.0.1:3000/addtoCart/<%= toedit[0]._id %>" method="POST">
+	<span>Item Id:</span><br>
+  <input type="text" value="<%= toedit[0]._id %>" name="_id" readonly><br>
+  <br>
+	<span>Item name:</span><br>
+	<input type="text" value="<%= toedit[0].name %>" name="name" readonly><br>
+	<br>
+		<span>Item supplier email:</span><br>
+	<input type="email" value="<%= toedit[0].supplier_email %>" name="supplier_email" readonly><br>
+	<br>
+			<span>Item price per unit:</span><br>
+     <input type="number" value="<%= toedit[0].unit_price %>" name="unit_price" readonly><br>
+     <br>
+     			<span>Item quantity:</span><br>
+
+	 <input type="number" value="<%= toedit[0].quantity %>" name="quantity"><br>
+	 <br>
+         <button type="submit">Add to cart</button>
+
+</div>
+  </div>
+
+
+
+</form>
+
+
+
+</div>
+</body>
+
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+  font-size: 100%;
+  padding: 1%;
+}
+
+* {
+  box-sizing: border-box;
+}
+.logoutLblPos{
+   background-color: #008080;
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+.button {
+  background-color: #008080;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%;
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%;
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%;
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color:  #008080;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #008080;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
+<script>
+  var r =window.location.href;
+var w=r.split("/")
+
+    function getURL() {
+       var action_src = "/schooldata/" + w[4];
+var your_form = document.getElementById('your_form');
+your_form.action = action_src ;
+     
+    }
+	// function validate()
+	// {
+	// 	var expMonth=document.getElementById("expmonth");
+	// 	var expYear=document.getElementById("expyear");
+	// 	//today = new Date();
+	// 	var exMonth = parseInt(expMonth, 10);
+	// 	var exYear = parseInt(expYear, 10);
+	// 	var month = d.getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12
+	//     var year = d.getFullYear();
+	// 	//someday = new Date();
+	// 	//someday.setFullYear(exYear, exMonth, 1);
+
+	// 	if (exYear < year) {
+ //   			alert("The expiry date is before today's date. Please select a valid expiry date");
+ //   			return false;
+	// 	}
+	// 	else {
+	// 		if(exYear==year && exMonth<month)
+	// 		{
+	// 			alert("The expiry date is before today's date. Please select a valid expiry date");
+ //   				return false;
+	// 		}
+			
+	// 	}
+   
+ //    return true;
+	// }
+</script>
+</head>
+<body>
+  <form action="/"> 
+<button type="submit" class="button button1">Home</button>
+</form>
+<h1 style="text-align:center">FEE PAYMENT</h1>
+
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form id = "your_form"  method="POST" onsubmit=" return getURL()">
+      
+        <div class="row">
+          <div class="col-50">
+            <h3>Details</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full name</label>
+            <input type="text" id="name" name="name" placeholder="Enter full name" required>
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email" name="email" placeholder="email@example.com" required>
+            <label for="amount"><i class="fa fa-amount"></i>Amount</label>
+            <input type="text" id="amount" name="amount" value="25000" readonly>
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="Enter city" required>
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" placeholder="State" required>
+            
+          </div>
+
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cname" placeholder="Enter name" required>
+            <label for="ccnum">Credit card number</label>
+            <input type="text" pattern="[0-9\s]{14,19}" id="ccnum" name="ccnum" placeholder="1111-2222-3333-4444" required>
+            <label for="cvv">CVV</label>
+            <input type="text" pattern="[0-9]{3}" id="cvv" name="cvv" placeholder="***" required>  
+            <div class="row">
+            	<div class="col-50">
+            		<label for="expmonth">Exp Month</label>
+            		<input type="text" list="expmonth" name="expmonth" placeholder="00" required>
+            		<datalist id="expmonth">
+            			<option value="01">
+    					<option value="02">
+    					<option value="03">
+    					<option value="04">
+    					<option value="05">
+    					<option value="06">
+    					<option value="07">
+    					<option value="08">
+    					<option value="09">
+    					<option value="10">
+    					<option value="11">
+    					<option value="12">
+    				</datalist>
+            	</div>
+            	<div class="col-50">
+                	<label for="expyear">Exp Year</label>
+                	<input type="text" list="expyear" name="expyear" placeholder="0000" required>
+            		<datalist id="expyear">
+            			<option value="2020">
+    					<option value="2021">
+    					<option value="2022">
+    					<option value="2023">
+    					<option value="2024">
+    					<option value="2025">
+    					<option value="2026">
+    					<option value="2027">
+    					<option value="2028">
+    					<option value="2029">
+    					<option value="2030">
+    					<option value="2031">
+    					<option value="2032">
+    					<option value="2033">
+    					<option value="2034">
+    					<option value="2035">
+    					<option value="2036">
+    				</datalist>
+              	</div>
+            </div>
+          </div>
+        </div>
+        <input type="submit" value="PAYMENT" class="btn" onclick="validate()">
+        <input type="reset" name="Reset" value="Reset" class="btn">
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+columnfull {
+  float: left;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.column {
+  margin:auto;
+  width: 50%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.cardtop {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  color: white;
+  background-color: #000000;
+}
+
+
+</style>
+</head>
+<body>
+<div class="row">
+
+<div class="columnfull">
+    <div class="cardtop">
+<h2>Add an item in shop</h2>
+
+ </div>
+  </div>
+  <br>
+  <br>
+
+<div class="column">
+      <div class="card">
+<form action="http://127.0.0.1:3000/addShoppost" method="POST">
+
+ <span> Item Name:</span><br>
+  <input type="text"  name="name"><br>
+  <br>
+  	<span> Item Quantity available in Shop:</span><br>
+  <input type="number"  name="quantity"><br>
+    <br>
+    	<span> Supplier email:</span><br>
+<input type="email" name="supplier_email"><br>
+    	<br>
+    	<span> Price per unit:</span><br>
+ <input type="number"  name="unit_price"><br>
+<br>
+
+  <button type="submit">Add item</button>
+</form>
+
+</div>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

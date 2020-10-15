@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+columnfull {
+  float: left;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.column {
+  margin:auto;
+  width: 35%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.cardtop {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  color: white;
+  background-color: #000000;
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="row">
+
+<div class="columnfull">
+    <div class="cardtop">
+<h2>Place the order</h2>
+<p>Enter supplier email and your shipping adress</p>
+
+ </div>
+  </div>
+  <br>
+  <br>
+  <div class="column">
+      <div class="card">
+<form action="http://127.0.0.1:3000/placeOrder" method="POST">
+
+  
+    <input type="email" placeholder="supplier email" name="supplier_email"><br>
+    <br>
+    <br>
+        <input type="textarea" placeholder="Enter your adress" name="adress"><br>
+
+<br>
+<br>
+  <button type="submit">Place order</button>
+</form>
+</div>
+</div>
+</div>
+</body>
+
+
+</body>
+</html>

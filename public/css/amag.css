@@ -1,0 +1,30 @@
+body {
+ background-image: url("amain.jpg");
+ background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment:fixed;
+
+}
+ /*background-color: #cccccc;*/
+
+	.vertical-menu {
+  width: 200px; /* Set a width if you like */
+}
+
+.vertical-menu a {
+  background-color:black; /* Grey background color */
+  color: white; /* Black text color */
+  display: block; /* Make the links appear below each other */
+  padding: 45px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu a:hover {
+  background-color: lightblue; /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+  background-color: ; /* Add a green color to the "active/current" link */
+  color: white;
+}

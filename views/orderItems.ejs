@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.columnfull {
+  float: left;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.column {
+  float: left;
+  width: 100%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  margin: 30px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.cardtop {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  color: white;
+  background-color: #000000;
+}
+
+
+
+.card:hover
+{
+    background-color: #00FFFF;
+
+}
+
+</style>
+  <title>MY APP</title>
+</head>
+
+
+
+
+
+<!----------------------------------------------------------------------------------------------------------------------->
+<body>
+
+  <div class="row">
+
+<div class="columnfull">
+    <div class="cardtop">
+<h2>List of Items in the Order</h2>
+<p> <%=  order_id  %></p>
+
+ </div>
+  </div>
+  <br>
+  <br>
+
+  <div class="column">
+      <div class="card1">
+
+  
+
+<ul >
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < items.length; i++) {%>
+
+    <div class="column">
+      <div class="card">
+    <li >
+      <!-- Output name from the iterated quote object -->
+              <span>Item Name</span><br>
+              <span><%= items[i].name %></span><br>
+              <br>
+              
+              <span> Item Unit Price </span><br>
+                              <span><%= items[i].unit_price %></span><br>
+
+                <br>
+
+              <span>supplier email</span><br>
+                <span><%= items[i].supplier_email %></span><br>
+      <!-- Output quote from the iterated quote object -->
+      <br>
+                    <span>Quantity</span><br>
+                    <span><%= items[i].quantity %></span>
+                    <br>
+                    <br>
+              </li>
+
+  </div>
+</div>
+
+
+
+
+  <% } %>
+</ul>
+
+
+
+</div>
+</body>
+</html>
+

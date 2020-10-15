@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style> 
+body {
+  font-family:Arial;
+  font-size: 100%;
+  padding: 1%;
+  background-color: lightblue;
+  /*background-blend-mode: lighten;*/
+  height:100%;
+  width:100%;
+  background-size: cover;
+  background-image: url("images/ngo.jpg");
+  opacity:0.5;
+  z-index:-1;
+  height:100%;
+  width:100%;
+}
+.container {
+  border:2px solid black;
+  background-color: #b0eef5;
+  border-radius: 3px;
+  position: absolute;
+  color: 2px solid black;
+  top:10%;
+  left:45%;
+  transform: translate(-50%, -50%);
+  width:50%;
+  padding: 1%;
+  box-sizing: border-box;
+  margin: 1%;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+tr, th, td{
+  border: 1px solid black;
+  font-weight: 900;
+  text-align:center;
+}
+
+</style>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>request</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body >
+  <div>
+      <h1 align="center">Request From Students  </h1>
+      <% if (locals.err) {%>
+      <table class="container">
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Nmae</th>
+        <th>Age</th>
+        <th>Date of  Birth </th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Date of  Birth c</th>
+        <th>Marks sheet</th>
+        <th>Address proof</th>
+        <th>Action</th>
+        <th>Action</th>
+      </tr>
+       <%  data.forEach(function(data){%>
+        <tr>
+            <td><%=data.id%></td>
+            <td><%=data.firstname%></td>
+            <td><%=data.lastname%></td>
+            <td><%=data.age %></td>
+            <td><%=data.dob %></td>
+            <td><%=data.email %></td>
+            <td><%=data.phoneno %></td>
+            <td><%=data.dobc %></td>
+            <td><%=data.markc %></td>
+            <td><%=data.addc %></td>
+
+            <td>
+                  <form method="post" action="/delete/<%= data.id %>">
+                    <button type="submit" name="delete" class="btn btn-outline-danger">Delete</button>
+                  </form>
+            </td>
+            <td>
+                  <form method="post" action="/acc/<%= data.id %>">
+                    <button type="submit" name="delete" class="btn btn-outline-danger">Approve</button>
+                  </form>
+            </td>
+        </tr>
+        <%  }); %>
+      </table>
+             <% } %>
+
+    <% if (locals.corr) { %>
+        <h2>no request yet </h2>
+      <% } %>
+  </div>
+  </body>  
+</html>

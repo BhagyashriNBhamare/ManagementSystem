@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+<body>
+
+	<div>
+  <h1> Stock </h1>
+<h2> Available </h2>
+
+<ul >
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < avail.length; i++) {%>
+    <li >
+      <!-- Output name from the iterated quote object -->
+            <span><%= avail[i]._id %></span>:
+
+      <span><%= avail[i].name %></span>:
+      <!-- Output quote from the iterated quote object -->
+      <span><%= avail[i].quantity %></span>
+            <span><%= avail[i].supplier_email %></span>
+
+    </li>
+
+  <a href="http://127.0.0.1:3000/editavail/<%= avail[i]._id %>"  >update</a> 
+
+
+  <% } %>
+</ul>
+   <a href="http://127.0.0.1:3000/add">Add a new item</a> 
+
+</div>
+
+
+<div>
+  <h1> Shop </h1>
+<h2> Items </h2>
+
+<ul >
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < item.length; i++) {%>
+    <li >
+      <!-- Output name from the iterated quote object -->
+            <span><%= item[i]._id %></span>:
+
+      <span><%= item[i].name %></span>:
+      <!-- Output quote from the iterated quote object -->
+      <span><%= item[i].quantity %></span>
+            <span><%= item[i].supplier_email %></span>
+
+              <span><%= item[i].price %></span>
+
+
+    </li>
+
+  <a href="http://127.0.0.1:3000/edititem/<%= item[i]._id %>"  >update</a> 
+   <a href="http://127.0.0.1:3000/addtoCart/<%= item[i]._id %>"  >add to cart</a> 
+
+
+
+  <% } %>
+</ul>
+   <a href="http://127.0.0.1:3000/addinShop">Add a new item in shop</a> 
+
+</div>
+
+<div>
+
+  <h2> Cart </h2>
+
+<ul >
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < cart.length; i++) {%>
+    <li >
+      <!-- Output name from the iterated quote object -->
+            <span><%= cart[i]._id %></span>:
+
+      <span><%= cart[i].name %></span>:
+      <!-- Output quote from the iterated quote object -->
+      <span><%= cart[i].quantity %></span>
+            <span><%= cart[i].supplier_email %></span>
+
+    </li>
+
+  <% } %>
+</ul>
+
+   <a href="http://127.0.0.1:3000/placeOrder">Place order</a> 
+
+</div>
+
+</body>
+</html>
+

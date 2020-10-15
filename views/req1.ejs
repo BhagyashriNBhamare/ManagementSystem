@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style>
+body {
+  background-color: #f3f3f3;
+  font-family: Futura, sans-serif;
+}
+
+.wrapper {
+  margin: 24px 180px;
+}
+.logoutLblPos{
+   background-color: #008080;
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+.button {
+  background-color: #008080;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+
+
+
+h1 {
+  color:  #008080;;
+  text-align: center;
+}
+
+/* Table styles */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,th,tr {
+  padding: 0;
+  text-align: center;
+}
+
+td:first-of-type {
+  padding-center: 36px;
+  width: 80px;
+}
+
+.c-table {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 25px;
+  line-height: 2.25;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.c-table__cell {
+  padding: 12px 6px 12px 12px;
+  word-wrap: break-word;
+}
+
+.c-table__header tr {
+  color: #fff;
+}
+
+.c-table__header th {
+  background-color:#008080;
+  padding: 18px 6px 18px 12px;
+}
+
+.c-table__header th:first-child {
+  border-top-left-radius:  4px;
+}
+
+.c-table__header th:last-child {
+  border-top-right-radius: 4px;
+}
+
+.c-table__body tr {
+  border-bottom: 1px solid rgba(113, 110, 182, 0.15);
+}
+
+.c-table__body tr:last-child {
+  border-bottom: none;
+}
+
+.c-table__body tr:hover {
+  background-color: rgba(113, 110, 182, 0.15);
+  color: #272b37;
+}
+
+.c-table__label {
+  display: none;
+}
+
+/* Mobile table styles */
+
+@media only screen and (max-width: 767px) {
+
+  table, thead, tbody, th, td, tr { 
+    display: block; 
+  }
+  
+  td:first-child { 
+    padding-top: 24px;
+  }
+
+  td:last-child { 
+    padding-bottom: 24px;
+  }
+  
+  .c-table {
+    border: 1px solid rgba(113, 110, 182, 0.15);
+    font-size: 15px;
+    line-break: 2.25;
+  }
+
+  .c-table__header tr { 
+    position: center;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  .c-table__cell { 
+    padding: 24px 24px;
+    position: relative; 
+    width: 100%;
+    word-wrap: break-word;
+  }
+
+  .c-table__label {
+    color: #272b37;
+    display: block;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 2.25;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+ 
+  .c-table__body tr:hover {
+    background-color: transparent;
+  }
+
+  .c-table__body tr:nth-child(odd) {
+    background-color: rgba(113, 110, 182, 0.04); 
+  }
+  
+</style>
+<head>
+<body>
+<form action="/"> 
+<button type="submit" class="button button1">LOGOUT</button>
+</form>
+
+<div class="wrapper">
+  <h1>Students</h1>
+  <table class="c-table">
+     <% if (locals.err) {%>
+  <thead class="c-table__header">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Date of  Birth c</th>
+        <th>Marks sheet</th>
+        <th>Address proof</th>
+        <th>Action</th>
+        <th>Action</th>
+      </tr>
+  </thead>
+   <%  data.forEach(function(data){%>
+  <tbody class="c-table__body">
+    <tr>
+      <td><%=data.id%></td>
+      <td><%=data.firstname%></td>
+      <td><%=data.lastname%></td>
+      <td><%=data.age %></td>
+      <td><%=data.email %></td>
+      <td><%=data.dobc %></td>
+      <td><%=data.markc %></td>
+      <td><%=data.addc %></td>
+      <td>
+                  <form method="post" action="/delete/<%= data.id %>">
+                    <button type="submit" name="delete" class="btn btn-outline-danger">Delete</button>
+                  </form>
+            </td>
+            <td>
+                  <form method="post" action="/acc/<%= data.id %>">
+                    <button type="submit" name="delete" class="btn btn-outline-danger">Approve</button>
+                  </form>
+            </td>
+    </tr>
+  </tbody>
+  <%  }); %>
+</table>
+<% } %>
+ <% if (locals.corr) { %>
+        <h2>no request yet </h2>
+<% } %>
+</div>  
+  </body>
+  </html> 

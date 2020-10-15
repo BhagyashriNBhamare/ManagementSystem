@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Donate medicine</title>
+    <link rel="stylesheet" type="text/css" href="css/donate.css" media="screen">
+    <style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial;
+  background: black;
+  text-align: center;
+}
+
+p {
+    text-indent: 50px;
+    text-align: justify;
+    letter-spacing: 3px;
+    font-size:14px;
+    margin-bottom:15px;
+    margin-top:12px;
+  padding:10px;
+}
+
+
+.header{/*height:128px;*/
+  text-align: center;
+  display: block;
+  width:auto;
+  height:135px;
+  background-color:white;
+   padding: 37px; 
+  box-shadow: inset 0 0 2px 1px rgba(0,0,0,0.4);
+}
+
+.content{
+text-align:center;
+background-color:white ;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+margin-top: 20px;
+margin-bottom: 20px;
+margin-right: 140px;
+margin-left: 140px;
+}
+
+.navbar {
+  width:auto;
+    overflow: hidden;
+    background-color: #008080 ;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top:28px;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 8px 40px;
+    text-decoration: none;
+    margin-right:13px;
+    margin-left:13px;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+    margin-right:13px;
+    margin-left:13px;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding:8px 40px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #008080;
+    color: black;
+  cursor:pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #008080;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 0px 0px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+h3{
+  font-size: 22px;
+  font-family: Serif;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+
+img {
+    vertical-align: middle;
+    horizontal-align:middle;
+    width: 500px;
+    height: 400px;
+    padding: 0px;
+    margin: 0px;
+    object-fit:cover;
+}
+
+/* Slideshow container
+  padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px; */
+.slideshow-container {
+  text-align:center;
+  max-width:1020px;
+  position: relative;
+  margin: 0;
+  padding:0px;
+}
+
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+h1 {
+    font-family: "Times New Roman", Times, serif;
+    color: #008080;
+    font-size: 30px;
+    margin-right: 15px;
+    display: inline-block;
+    margin-bottom: 0;
+    padding-top: 2px;
+    
+}
+h4{
+  font-size: 45px;
+  font-family: "Times New Roman", Times, serif;
+}
+h5{
+  font-size: 25px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /*ooooo overflow: hidden;         oooo*/
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/*jjjjjjjjjjjjjjjjj*/
+
+
+marquee {
+    text-align:center;
+    height:50px;
+    width: 50%;
+    overflow: hidden;
+    border:1px solid #ccc;
+    background-color: grey;
+    color: rgb(202, 255, 195);
+}
+
+marquee li {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-align:center;
+    list-style:none;
+    margin:3px;
+    padding:20;
+    position: relative;
+}
+
+</style>
+<script >
+  var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 3000); // Change image every 2 seconds
+}
+
+
+
+
+</script>
+</head>
+
+
+  <body>
+ <div class="header" id="myHeader">
+    <h4 style="color:#008080;">hackathon High School</h4>
+    <h3>We will succeed</h3>
+   </header>
+  <div class ="content">     
+ <div class="navbar">
+  <a href="/admin">Admin</a>
+  <a href="/fee">Fee Payment</a>
+  <a href="/student/add">Registration</a>
+  <a href="/book">Book Inventory</a>
+  <a href="/">Home</a>
+  
+</div>
+    
+ 
+  <div class="slideshow-container">
+
+<div class="mySlides fade">
+  <img src="https://www.franchiseindia.com/uploads/content/edu/art/private-schools-0a9fc06234.jpg" style="width:100%">
+  
+</div>
+
+<div class="mySlides fade">
+  <img src="http://tigpublicschool.org/assets/uploads/konnagar_(1).jpg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <img src="https://www.agakhanschools.org/Content/img/india/AKSM/banner.jpg?2" style="width:100%">
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+
+<h1 style="color:#008080">Welcome To Hackathon High School!</h1>
+
+<p>At hackathon along with the pursuit of academic excellence, our thrust is on education based on values. Our endeavour is to foster the best of Indian values and cultivate a global outlook.
+
+hackathon's philosophy is founded on the belief that education is about fun-filled learning, enjoyable and relevant to today's world, while unleashing the creative potential of the child. Learning at our School is child-centered and growth oriented.
+
+We aim to provide a world-class education with state-of-the-art facilities for the holistic development of the child. Our teaching methods are innovative and experimental, which in all humility, make the learning process an enlightening one, igniting the child's intellectual curiosity.
+
+We believe that this prepares the child to face not only the challenges in academics, but also in all other spheres of life.</p>
+   
+<h1 style="color:#008080">About The School</h1>   
+
+   <p>The philosophy of education in hackathon is that all students be recognized as individuals with a right to learn and evolve academically and personally in a supportive environment .While striving for excellence in academics, we also seek to impart a strong sense of personal integrity and fundamental human values to our students through our educational principles and through the role models- the staff themselves. We believe that we are responsible for demonstrating and promoting the qualities of an educated person which include wisdom, competence, compassion, sense of well-being, and quest for peace and justice. Consequently, we send forth young people with profound capacity for self giving and sensitivity to respond empathetically to the social realities of their times.
+   </p>
+   <p>
+   hackathon High school prepares students for the ICSE examinations. The medium of instruction is English and Telugu and Hindi are taught as second language. The school also offers plus two school course. The plus two course is a two year post secondary study through the medium of English leading to an Examination conducted by the Council for ISC Examination, New Delhi. The course is recognized as the equivalent of the Two year pre university of the intermediate college course.  
+   </p>
+    
+  <script>
+  (function() {
+    var cx = '005548955667549637143:kehp0d0oa8y';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+   
+   <h5 style="color:#008080">News Feed</h5>
+   <!--<div class="holder">-->
+     <marquee behavior ="scroll" direction="up"><li>Admissions:Closing this Monday please apply as soon as possible</li><li>Holiday for Ramzan .Have a happy Holiday!</li>
+       <li>Hockey Tournatment:Postponed till next week.Classes will be taken as usual on Monday</li>
+       <li>
+Educational Trip to Infosys</li>
+       <li>96th Annual Conference of Heads of Andhra Pradesh Schools-2018</li>
+       <li>Hockey Tournatment:Postponed till next week.Classes will be taken as usual on Monday</li>
+     </marquee>
+  
+   <!--</div>-->
+
+</div>
+    
+    
+
+<body>
+</html>

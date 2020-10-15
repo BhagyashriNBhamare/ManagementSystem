@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Donate medicine</title>
+    <link rel="stylesheet" type="text/css" href="css/donate.css" media="screen">
+    <style>
+* {
+  margin:0;
+  padding:0;
+}
+body {
+  background:url('https://i.imgur.com/gaqdL8o.jpg') repeat #ccc;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+}
+a {
+  text-decoration:none;
+  color:white;
+  outline:none; /* IE fix */
+}
+.container, nav#mainNav {
+  width:768px;
+  margin:0 auto;
+}
+.header {
+  background:#e1fbfc;
+  background:linear-gradient(#e2fbfd, #e1fbfc);
+  background:-webkit-linear-gradient(#e2fbfd, #e1fbfc);
+  background:-moz-linear-gradient(#e2fbfd, #e1fbfc);
+  background:-o-linear-gradient(#e2fbfd, #e1fbfc);
+  background:-ms-linear-gradient(#e2fbfd, #e1fbfc);
+  
+  padding:10px 0 0 10px;
+}
+div.logo {
+  width: 768px;
+  margin:0 auto;
+}
+div.navBar, input[type="submit"] {
+  background:#008080;
+  background:linear-gradient(#008080;, #3280c2);
+  background:-webkit-linear-gradient(#008080;, #3280c2);
+  background:-moz-linear-gradient(#008080;, #3280c2);
+  background:-o-linear-gradient(#008080;, #3280c2);
+  background:-ms-linear-gradient(#008080;, #3280c2);
+  box-shadow:inset 0 1px #6ce4f6, 0 1px #787778;
+  color:white;
+}
+nav#mainNav {
+  overflow:hidden;
+}
+#mainNav ul {
+  list-style:none;
+  float:left;
+}
+#mainNav ul li {
+  display:inline;
+}
+#mainNav ul li a {
+  padding:15px 0;
+  margin-right:30px;
+  display:inline-block;
+  position:relative;
+  text-align:center;
+}
+#mainNav ul li a:after {
+  content:'';
+  display:block;
+  width:0%;
+  opacity:0;
+  position:absolute;
+  bottom:0px;
+  border:1px solid #6ce4f6;
+  transition:all .3s;
+}
+#mainNav ul li a:hover:after {
+  width:100%;
+  opacity:1;
+}
+div.searchIcon {
+  float:right;
+}
+
+div.container {
+  background:white;
+  margin-top:30px;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -o-border-radius:5px;
+  -ms-border-radius:5px;
+  border:1px solid #ccc;
+  padding:10px;
+  color:#939393;
+  font-weight:400;
+  font-size:19px;
+}
+.formElement {
+  padding:20px 5px;
+}
+label.label {
+  width:60%;
+  display:inline-block;
+  text-align:right;
+  vertical-align:top;
+  padding-right:25px;
+}
+input,textarea, select {
+  font-family: 'Open Sans', sans-serif;
+  background:#f6f6f6;
+  color:#a4a4a4;
+  border:none;
+  outline:none;
+  padding:13px;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -o-border-radius:5px;
+  -ms-border-radius:5px;
+  border:1px solid #ccc;
+  width:30%;
+  transition:all .3s;
+}
+select {
+  width:33.5%;
+  box-shadow:0 3px 0 #ccc;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  -o-appearance:none;
+  -ms-appearance:none;
+  appearance:none;
+  cursor:pointer;
+}
+input:hover,textarea:hover, select:hover {
+  border-color:#aaa;
+}
+input:focus,textarea:focus, select:focus {
+  box-shadow:0 0 0px 1.5px #3d92d9;
+}
+
+label.select {
+  position:relative;
+}
+label.select:after {
+  content:'<>';
+  font:15px "Consolas", monospace;
+  color:#ccc;
+  -webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  transform:rotate(90deg);
+  position:absolute;
+  right:22px;
+  top:2px;
+  border-bottom:1px solid #ccc;
+  padding-bottom:10px;
+  margin-bottom:-50px;
+}
+input[type="radio"] {
+  width:auto;
+  margin-right:6px;
+  margin-left:5%;
+  cursor:pointer;
+}
+label[for="dev"], label[for="qa"] {
+  cursor:pointer;
+}
+input[type="submit"] {
+  cursor:pointer;
+  border-radius:40px;
+  -webkit-border-radius:40px;
+  -moz-border-radius:40px;
+  -o-border-radius:40px;
+  -ms-border-radius:40px;
+  width:20%;
+}
+input[type="submit"]:hover {
+  background::#69B7FA;
+  background:linear-gradient(#69B7FA, #3280c2);
+  background:-webkit-linear-gradient(#69B7FA, #3280c2);
+  background:-moz-linear-gradient(#69B7FA, #3280c2);
+  background:-o-linear-gradient(#69B7FA, #3280c2);
+  background:-ms-linear-gradient(#69B7FA, #3280c2);
+  box-shadow:inset 0 1px #6ce4f6, 0 1px #787778;
+}
+.formElement:last-child {
+  padding:0;
+  margin-bottom:15px;
+}
+.searchIcon input {
+  width:200px;
+  padding:5px;
+  position: relative;
+  top: -5px;
+  left: -10px;
+  background: #2169a6;
+  border-color: #4197df;
+  color:white;
+}
+.searchIcon img {
+  margin-top:15px;
+  cursor:pointer;
+}
+button#searchBtn {
+  background:none;
+  border:none;
+  outline:none;
+  opacity:.8;
+}
+button#searchBtn:hover {
+  opacity:1;
+}
+input.searchBox {
+  left:0;
+  width:0;
+  opacity:0;
+}
+.button {
+  padding: 10px 10px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color:#008080;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {
+  background-color: #008080;;
+}
+
+.button:active {
+  background-color: #008080;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.topnav-right {
+  float: left;
+}
+</style>
+
+</head>
+<body>
+<div class="header">
+      <!-- <div class="logo">
+            <a href="#"><img src="https://i.imgur.com/zyu6Nl9.png" alt="logo" width="175"></a>
+        </div> -->
+    </div>
+    
+    <div class="navBar">
+      <nav id="mainNav">
+        <div class="topnav-right">
+            <ul>
+              <li><a href="/">HOME</a></li>
+            </ul>
+          </div>
+          <ul>
+              <li><a href="#">Registration Form </a></li>
+            </ul>
+          <ul>
+             
+          
+          
+        </nav>
+    </div>
+    
+    <div class="container">
+      <form action="/student" method="post">
+          <div class="formElement">
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname" required><br>
+          </div>
+            
+          <div class="formElement">
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname" required><br>
+            </div>
+ 
+          <div class="formElement">
+               <label for="date">DOB:</label>
+               <input type="date" id="date" name="date" required>
+          </div>
+          <div class="formElement">
+           <label for="age">AGE:</label>
+           <input type="text" id="age" name="age" required><br>
+          </div>
+          <div class="formElement">
+           <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+          </div>
+          <div class="formElement">
+                <label for="phone">Phone No:</label>
+                <input type="text" id="phone" name="phone" required><br>
+          </div>
+          <div class="formElement">
+                <label for="dobc">Date Of Birth Certificate</label>
+                <input type="file" id="dobc" name="dobc">
+          </div>
+          <div class="formElement">
+               <label for="studentmarksheet">Last Year Marksheet(if not first class):</label>
+                <input type="file" id="studentmarksheet" name="studentmarksheet">
+          </div>
+          <div class="formElement">
+              <label for="addc">Address Proof:</label>
+              <input type="file" id="addc" name="addc">
+          </div>
+          <button class="button" type="reset">Reset</button>
+          <button class="button" type="submit">Submit</button>
+        </form>
+    </div>
+<body>
+</html>
