@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>query form</title>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .query-box {
+      max-width: 1000px;
+    }
+
+    .tags {
+      border: solid 1px #696969;
+      border-radius: 20px;
+      padding: 10px;
+      margin-top: 5px;
+      box-shadow: 2px 2px #696969;
+    }
+
+    .tag {
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .tagsList {
+      border: solid 1px #696969;
+      border-radius: 20px;
+      margin-top: 5px;
+      box-shadow: 2px 2px #696969;
+    }
+
+    .no-border {
+      border: 0;
+      box-shadow: none;
+    }
+
+    .btn {
+      border-radius: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal"><b>Parents/Students query form</b></h5>
+  </div>
+  <form action="/question" method="POST">
+    <div class="container">
+      <div class="query-box px-3 py-3 pt-md-5 pb-md-4 mx-auto">
+        <div class="input-group">
+
+          <input type="text" id="q11" class="form-control" aria-label="With textarea" placeholder="Ask a Question...." rows="5"
+            name="question_stmt" style="border: solid 1px;border-radius: 20px; resize: none;"></input>
+        </div>
+        <div class="row" style="margin: auto;">
+
+          <div class="col-md-4 tags">
+            <p>Add Tags</p>
+            <div class="tag col">
+              <button type="button" class="btn btn-outline-info" onclick="addToLlist(this.innerHTML)">Health</button>
+              <button type="button" class="btn btn-outline-info" onclick="addToLlist(this.innerHTML)">Studies</button>
+              <button type="button" class="btn btn-outline-info" onclick="addToLlist(this.innerHTML)">Fees</button>
+            </div>
+            <div class="tag col">
+              <button type="button" class="btn btn-outline-info" onclick="addToLlist(this.innerHTML)">Bus</button>
+              <button type="button" class="btn btn-outline-info" onclick="addToLlist(this.innerHTML)">Exams</button>
+            </div>
+          </div>
+
+          <div class="col-md tagsList">
+            <p>Tag listed : </p>
+            <input type="text" class="form-control no-border" id="tagsList" aria-label="With textarea"
+              style="width: 70%;background: white;resize: none;" rows="2" name="tags_list" readonly></input>
+            <button type="button" class="btn btn-outline-dark" id="clear" style="float: right;"
+              onclick="clear1()">clear</button>
+          </div>
+
+
+        </div>
+
+        <div class="form-group" style="margin-top:1%; ">
+          <label for="InputEmail1"><b>Reply to (your email)</b></label>
+          <input type="email" name="email" class="form-control form-control-lg" id="InputEmail1" placeholder="example@mail.com"/>
+          
+          </div>
+          
+        </div>
+        <div class="col" style="text-align: right;">
+          <button type="button" class="btn btn-danger btn-lg">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-lg"><b>Submit</b></button>
+        </div>
+
+      </div>
+
+
+    
+    </div>
+  </form>
+    <script type="text/javascript">
+      
+      function addToLlist(obj) {
+        var list = document.getElementById('tagsList');
+        if (list.value == "") {
+          list.value += obj;
+        }
+        else
+          list.value += ',' + obj;
+      }
+      function clear1() {
+        var list = document.getElementById('tagsList');
+        list.value = "";
+      }
+    </script>
+</body>
+
+</html>

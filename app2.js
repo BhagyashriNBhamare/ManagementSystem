@@ -87,19 +87,12 @@ var db;
 var availStock;
 var cart;
 var availItems;
+var question_collection;
+
 
    var a,b,c;
 
-// var nodemailer = require('nodemailer');
 
-// var transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     user: 'steveprior050@gmail.com',
-//     pass: 'madhuparnainmanglore',
-//   }
-// });
-// caching disabled for every route
 app.use(function(req, res, next) {
   res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   // req.session.loggedin = false;
@@ -117,6 +110,7 @@ MongoClient.connect("mongodb+srv://hackathon:hackathon123@cluster0.astj2.mongodb
     cart = db.collection('cart');
     availItems = db.collection('available_Items');
     orders = db.collection('orders_history');
+      question_collection = db.collection('questions');
 
 
 
@@ -742,9 +736,75 @@ res.redirect("/req");
 });
 
 
+//##################
+
+app.get('/question', function(req, res) {
+  
+  res.render('ask',{useless:{}});
+
+});
 
 
-app.listen(process.env.PORT);
+app.post('/question', function(req, res) {
+  
+  question_collection.insertOne(req.body)
+  .then(result => {
+    console.log("yooooooooooooooooooooooooooooooooooooooooooooooooo");
+      return res.send("success");
+
+   // console.log(result)
+  })
+  .catch(error => console.error(error))
+
+});
+
+app.get("/questions/all",function(req,res){
+  db.collection('questions').find().toArray()
+    .then(results => {
+        console.log(results);
+            res.render('all_queries.ejs', { questions: results });
+    })
+    .catch(error => console.error(error))
+})
+app.get("/reply/:q",function(req,res){
+  ques=req.params.q
+  id=ques.split('@')[1]
+  var o_id = require('mongodb').ObjectID(id);
+  console.log(id)
+  db.collection('questions').find({_id:o_id}).toArray()
+  .then(results => {
+    
+    q_to_send=results[0]
+    res.render('reply.ejs', { question: q_to_send.question_stmt, email:q_to_send.email});
+  })
+  .catch(error => console.error(error))
+})
+
+app.post('/reply',function(req,res){
+  console.log(req.body.answer)
+  var mailOptions = {
+    from: 'hackathonsteve@gmail.com',
+    to: req.body.email,
+    subject: 'Query Response',
+    text: req.body.answer,
+  };
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  
+    return res.send("mail sent");
+  }); 
+  
+
+
+
+})
+
+
+app.listen(3000);
 console.log('you are listening to port ');
 console.log(process.env.PORT);
 
