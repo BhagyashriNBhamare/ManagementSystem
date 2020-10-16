@@ -744,7 +744,7 @@ res.redirect("/req");
 
 
 
-app.listen(3000);
+app.listen(process.env.PORT);
 console.log('you are listening to port ');
 console.log(process.env.PORT);
 
