@@ -127,6 +127,9 @@ span.price {
 <script>
   var r =window.location.href;
 var w=r.split("/")
+window.location.hash="no-back-button";
+window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+window.onhashchange=function(){window.location.hash="no-back-button";}
 
     function getURL() {
        var action_src = "/schooldata/" + w[4];

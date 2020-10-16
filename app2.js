@@ -13,7 +13,13 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended:true})); // support encoded bodies
 app.use('/assets', express.static('./public'));
 var nodemailer = require('nodemailer');
-fileUpload = require('express-fileupload')
+fileUpload = require('express-fileupload');
+var session = require('express-session');
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
 // var mysqlAdmin = require('node-mysql-admin');
 // app.use(mysqlAdmin(app));
 
@@ -93,7 +99,12 @@ var availItems;
 //     pass: 'madhuparnainmanglore',
 //   }
 // });
-
+// caching disabled for every route
+app.use(function(req, res, next) {
+  res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+  // req.session.loggedin = false;
+  next();
+});
 
 
 MongoClient.connect("mongodb+srv://hackathon:hackathon123@cluster0.astj2.mongodb.net/<dbname>?retryWrites=true&w=majority", {
@@ -116,6 +127,7 @@ MongoClient.connect("mongodb+srv://hackathon:hackathon123@cluster0.astj2.mongodb
 
 
 app.get('/bookinventory', async function(req, res) {
+  if (req.session.book) {
   
    db.collection('available_stock').find().toArray()
     .then(   results => {
@@ -156,7 +168,10 @@ app.get('/bookinventory', async function(req, res) {
    })
     
     .catch(error => console.error(error));
-
+}
+else{
+  res.redirect("/book")
+}
 
     
 
@@ -422,6 +437,9 @@ var mysqlAdmin = require('node-mysql-admin');
 app.use(mysqlAdmin(app));
 
 app.get('/', (req, res) => {
+   req.session.loggedin = false;
+   req.session.book = false;
+   req.session.username=false;
   res.sendFile(path.join(__dirname,'index.html'));
 });
 app.get('/admin', function(req,res) {
@@ -457,17 +475,20 @@ app.post('/admin', function(req, res) {
   var password = req.body.password;
   console.log(username);
   console.log(password);
-    con.query('SELECT * FROM admin WHERE username= ? AND password = ?', [username, password], function(err, result, fields) {
+con.query('SELECT * FROM admin WHERE username= ? AND password = ?', [username, password], function(err, result, fields) {
       if (err) throw err;
       
       if (result.length > 0) {
+        req.session.loggedin = true;
+        req.session.username = username;
         console.log(result)
         res.redirect("/req")
       } else {
         console.log('error')
         var err=true;
         res.render('admin1',{err:err})
-      }     
+      } 
+      // res.end();    
     });
 
 });
@@ -481,6 +502,8 @@ app.post('/book', function(req, res) {
       
       if (result.length > 0) {
         console.log(result)
+        req.session.book = true;
+        req.session.username = username;
         res.redirect("/bookinventory")
       } else {
         console.log('error')
@@ -498,7 +521,10 @@ app.get('/book', function(req,res) {
 });
 
 app.get('/req', (req, res) => {
-   con.query('SELECT * FROM data ', function(err, result, fields) 
+   if (req.session.loggedin) {
+    // response.send('Welcome back, ' + request.session.username + '!');
+    con.query('SELECT * FROM data ', function(err, result, fields) 
+
    {
       if (err) throw err;
       if (result.length > 0) 
@@ -515,7 +541,11 @@ app.get('/req', (req, res) => {
         res.render('req1',{err:err,corr:corr});
       }     
     });
-
+  } else 
+  {
+    res.redirect('/admin')
+  }
+  // res.end();
 
 });
 
@@ -536,6 +566,7 @@ app.post('/fee', function(req, res) {
       if (result.length > 0) 
       {
         console.log(result)
+        req.session.username = true;
         res.redirect('/fee/'+username);
         
       } 
@@ -549,8 +580,13 @@ app.post('/fee', function(req, res) {
 
 });
 app.get('/fee/:_id', function(req,res) {
+  if(req.session.username)
+  {
   res.sendFile(path.join(__dirname,'/money.html'));
-  // body...
+}
+else{
+  res.redirect('/fee');
+}
 });
 function convert(str) {
   var date = new Date(str),
@@ -569,14 +605,14 @@ var id=req.params._id;
 
   con.query(sql, function(err, result)  {
    if(err) throw err;
+ });
 
-   /*
-   var mailOptions = 
+  var mailOptions = 
   {
     from: 'hackathonsteve@gmail.com',
     to:result[0].email,
-    subject: 'Fee payment',
-    text: 'You have been added to schhol. Welcome to hackathon famity'
+    subject: 'successful payment',
+    text: 'Welcome to Hackathon High School.We will contact you soon for further procedure'
   }  
   transporter.sendMail(mailOptions, function(error, info)
   {
@@ -588,7 +624,6 @@ var id=req.params._id;
     {
     console.log('Email sent: ' + info.response);
     }
-    */
 });
 con.query('DELETE FROM studentfee WHERE username = ? ',[id], function (err, result) {
   if (err) throw err;
@@ -709,7 +744,7 @@ res.redirect("/req");
 
 
 
-app.listen(process.env.PORT);
+app.listen(3000);
 console.log('you are listening to port ');
 console.log(process.env.PORT);
 
