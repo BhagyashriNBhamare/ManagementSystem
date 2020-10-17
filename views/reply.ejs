@@ -45,7 +45,8 @@
           <h5>Question : </h5>
         </div>
         <div class="col-md">
-          <p><%= question %></p>
+          <!-- <p name="question" value="<%= question %>"><%= question %></p> -->
+          <input class="form-control" id="question" name="question" value="<%= question %>" readonly></input>
         </div>
       </div>
       <div class="row">
@@ -53,7 +54,7 @@
           <h5>Answer : </h5>
         </div>
         <div class="col-md">
-          <input class="form-control" name="answer"rows="5" style="resize: none;" placeholder="Type your Answer...."></input>
+          <input class="form-control" name="answer" rows="5" style="resize: none;" placeholder="Type your Answer...."></input>
         </div>
       </div>
       <div class="col-md">
@@ -69,7 +70,7 @@
 
       <div class="col-md" style="text-align: right;">
         <button class="btn btn-danger btn-lg">Cancel</button>
-        <button type="submit" btn btn-success btn-lg">Send</button>
+        <button type="submit" class="btn btn-danger btn-lg">Send</button>
       </div>
     </div>
 

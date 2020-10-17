@@ -750,7 +750,7 @@ app.post('/question', function(req, res) {
   question_collection.insertOne(req.body)
   .then(result => {
     console.log("yooooooooooooooooooooooooooooooooooooooooooooooooo");
-      return res.send("success");
+      res.redirect('/')
 
    // console.log(result)
   })
@@ -758,15 +758,22 @@ app.post('/question', function(req, res) {
 
 });
 
-app.get("/questions/all",function(req,res){
+app.get('/questions/all',function(req,res){
+   if (req.session.loggedin) {
   db.collection('questions').find().toArray()
     .then(results => {
         console.log(results);
             res.render('all_queries.ejs', { questions: results });
     })
     .catch(error => console.error(error))
+  }
+  else{
+    res.redirect('/admin')
+  }
+
 })
 app.get("/reply/:q",function(req,res){
+  if (req.session.loggedin) {
   ques=req.params.q
   id=ques.split('@')[1]
   var o_id = require('mongodb').ObjectID(id);
@@ -778,10 +785,16 @@ app.get("/reply/:q",function(req,res){
     res.render('reply.ejs', { question: q_to_send.question_stmt, email:q_to_send.email});
   })
   .catch(error => console.error(error))
+}
+else{
+  res.redirect('/admin')
+}
 })
 
 app.post('/reply',function(req,res){
-  console.log(req.body.answer)
+  console.log(req.body.answer);
+  console.log(req.body.question);
+  var question=req.body.question;
   var mailOptions = {
     from: 'hackathonsteve@gmail.com',
     to: req.body.email,
@@ -795,16 +808,22 @@ app.post('/reply',function(req,res){
       console.log('Email sent: ' + info.response);
     }
   
-    return res.send("mail sent");
-  }); 
   
+  }); 
+  var myquery = {question_stmt:question};
+  db.collection("questions").deleteOne(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+    // db.close();
+    res.redirect('/questions/all');
+  });
 
 
 
-})
+});
 
 
-app.listen(process.env.PORT);
+app.listen(3000);
 console.log('you are listening to port ');
 console.log(process.env.PORT);
 
